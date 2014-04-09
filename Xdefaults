@@ -1,3 +1,5 @@
+! ${HOME}/.Xdefaults
+
 *font: -*-*-medium-r-*--9-*-*-*-*-*-iso10646-1
 
 !xpdf
@@ -71,7 +73,7 @@ xft:simsun:pixelsize=15
 Rxvt.boldFont:xft:consolas:pixelsize=14:\
 style=bold,xft:simhei:pixelsize=15
 Rxvt.italicFont:xft:consolas:pixelsize=14:\
-style=italic,xft:youyuan:pixelsize=15
+style=italic,xft:simsun:pixelsize=15
 !Rxvt.font:xft:Serif:pixelsize=16
 Rxvt.scrollBar:False
 Rxvt.borderless:True

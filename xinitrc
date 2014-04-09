@@ -1,0 +1,21 @@
+#!/bin/sh
+xrdb -merge ${HOME}/.Xdefaults
+
+xset fp+ ~/.fonts
+xset fp rehash
+
+LANG="en_US.UTF-8"
+export LANG
+MM_CHARSET="UTF-8"
+export MM_CHARSET
+LC_CTYPE="zh_CN.UTF-8"
+
+export XMODIFIERS='@im=SCIM'
+export GTK_IM_MODULE=scim
+export QT_IM_MODULE=scim
+export GTK3_IM_MODULE=xim
+
+scim -d
+
+#exec icewm-session
+exec fvwm

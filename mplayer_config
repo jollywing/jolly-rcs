@@ -6,7 +6,7 @@ subfont-osd-scale=2
 #显示时间和字幕的字体大小
 subfont-text-scale=3
 #字幕字体文件
-font=/home/wuchen/.fonts/simhei.ttf
+font=/home/wuchen/.fonts/simsun.ttf
 #字幕编码（使用ttf字体时）
 subcp=cp936
 #字幕缩放：0不自动缩放；1按电影高度缩放；2按宽度缩放；3按对角线
