@@ -4,13 +4,15 @@ manage off tint2
 manage off conky
 
 client hints on
+set window_open_frame empty
 
 name main
-pad 0 0 20 0
+pad 0 0 25 0
 
-add assit
-pad 0 0 20 0
-hsplit %55
+hook on ^add pad 0 0 25 0
+add assist
+
+hsplit 55%
 
 exec conky -c ${HOME}/.musca/conkyrc
 exec tint2 -c ${HOME}/.musca/tint2rc

@@ -17,5 +17,6 @@ export GTK3_IM_MODULE=xim
 
 scim -d
 
-#exec icewm-session
-exec fvwm
+# exec icewm-session
+# exec fvwm
+exec musca -s ${HOME}/.musca/musca_start

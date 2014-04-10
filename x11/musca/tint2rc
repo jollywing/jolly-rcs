@@ -24,7 +24,7 @@ border_color = #FFFFFF 69
 # Panel
 panel_monitor = all
 panel_position = top right horizontal
-panel_size = 60% 24
+panel_size = 65% 24
 panel_margin = 0 0
 panel_padding = 7 0 7
 panel_dock = 0
@@ -50,7 +50,7 @@ urgent_nb_of_blink = 8
 task_icon = 1
 task_text = 1
 task_centered = 1
-task_maximum_size = 140 35
+task_maximum_size = 0 25
 task_padding = 6 2
 task_background_id = 3
 task_active_background_id = 2

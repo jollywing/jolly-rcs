@@ -8,10 +8,10 @@ app.mplayer:
 	cp mplayer_config ${HOME}/.mplayer/config
 
 x11.xdefaults:
-	cp Xdefaults ${HOME}/.Xdefaults
+	cp x11/Xdefaults ${HOME}/.Xdefaults
 
 x11.xinitrc:
-	cp xinitrc ${HOME}/.xinitrc
+	cp x11/xinitrc ${HOME}/.xinitrc
 
 MUSCA_PATH:=${HOME}/.musca
 x11.musca:
