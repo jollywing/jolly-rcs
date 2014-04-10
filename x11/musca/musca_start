@@ -1,0 +1,24 @@
+
+
+manage off tint2
+manage off conky
+
+client hints on
+
+name main
+pad 0 0 20 0
+
+add assit
+pad 0 0 20 0
+hsplit %55
+
+exec conky -c ${HOME}/.musca/conkyrc
+exec tint2 -c ${HOME}/.musca/tint2rc
+use main
+
+bind off Mod4+q
+bind on Mod4+q run ${HOME}/.musca/musca_exit
+bind on Mod4+F1 use main
+bind on Mod4+F2 use assist
+bind off Mod4+x
+bind on Mod4+x exec dmenu_run -i -b
