@@ -1,7 +1,8 @@
 
-all: app.all x11.all
+all: app.all x11.all shell.all
 app.all: app.mplayer
 x11.all: x11.xdefaults x11.xinitrc x11.musca
+shell.all: shell.bash shell.tcsh
 
 app.mplayer:
 	mkdir -p ${HOME}/.mplayer
@@ -17,3 +18,9 @@ MUSCA_PATH:=${HOME}/.musca
 x11.musca:
 	mkdir -p $(MUSCA_PATH)
 	cp x11/musca/* $(MUSCA_PATH)
+
+shell.bash:
+	cp shell/bashrc ${HOME}/.bashrc
+
+shell.tcsh:
+	cp shell/tcshrc ${HOME}/.tcshrc
