@@ -134,8 +134,6 @@ alias show-alldep	'make all-depends-list'            #需要在ports的安装目
 alias show-dep		'portmaster --show-work ./ | sort' #同上，且需要安装portmaster，只显示尚未安装的依赖
 alias show-ver		'pkg_version -v'                   #查看是否有软件可更新
 
-update系列。顾名思义，更新嘛。
-
 alias update-locatedb    '/usr/libexec/locate.updatedb'            #更新locate数据库
 alias update-kernsrc     'csup -L 2 /etc/supfiles/stable-supfile'  #同步kernel tree
 alias update-ports       'portsnap fetch update'                   #同步ports tree
