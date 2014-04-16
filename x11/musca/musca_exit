@@ -1,3 +1,4 @@
 
 exec killall conky
+exec killall tint2
 quit

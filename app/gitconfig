@@ -1,0 +1,17 @@
+[user]
+	email = jiqingwu@gmail.com
+	name = Jolly Wing
+
+[color]
+    ui = true
+
+[alias]
+	co = checkout
+	ci = commit
+	br = branch
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	mg = merge
+	glog = log --pretty=oneline --graph
+	df = difftool

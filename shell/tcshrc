@@ -51,9 +51,9 @@ setenv CLICOLOR yes
 # make grep colorful
 setenv GREP_OPTIONS --color=auto
 
-setenv XMODIFIERS @im=scim
-setenv QT_IM_MODULE xim
-setenv GTK_IM_MODULE xim
+# setenv XMODIFIERS @im=scim
+# setenv QT_IM_MODULE xim
+# setenv GTK_IM_MODULE xim
 
 # enable autocompletion
 set autolist
