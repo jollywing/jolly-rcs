@@ -4,6 +4,9 @@
 
 [color]
     ui = true
+    status = auto
+    diff = auto
+    branch = auto
 
 [alias]
 	co = checkout
@@ -15,3 +18,5 @@
 	mg = merge
 	glog = log --pretty=oneline --graph
 	df = difftool
+    pushm = push -u origin master
+    pullm = pull origin master
