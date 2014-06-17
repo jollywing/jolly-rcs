@@ -153,4 +153,7 @@ alias lft-phome	'lftp raphael.vicp.cc -u syh,syh'    #lftp的免输账号密码�
 alias scons	'scons -Q -j 4'                      #构建工具，默认4个线程进行
 alias valgrind-checkmem 'valgrind --tool=memcheck --leak-check=full'  #检查内存泄漏
 
+alias cdnotes 'cd ${HOME}/projects/jolly-notes'
+alias cdcodes 'cd ${HOME}/projects/jolly-code-snippets'
+
 # man tcsh

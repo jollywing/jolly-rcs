@@ -1,0 +1,335 @@
+################
+# jiqing's fvwm2rc
+# 2008-09-29
+###########################
+
+###########
+# Set environmnet variables
+#############################
+SetEnv fvwm_wallpapers $[FVWM_USERDIR]/wallpapers
+SetEnv fvwm_images $[FVWM_USERDIR]/images
+ImagePath $[fvwm_images]
+
+##########
+# DeskTop
+##############################
+#DesktopName 0 Debian Linux
+
+# 设定虚拟桌面大小
+DeskTopSize 1x3
+# 设定窗口最大化时离屏幕四边的象素距离
+EwmhBaseStruts 48 0 0 25
+EdgeScroll 0 0
+
+# 设定光标形状，默认的是个X
+CursorStyle Root left_ptr
+CursorStyle Default left_ptr
+
+#############
+# window behaviour
+#################################
+# Style * FocusFollowsMouse
+# 鼠标经过时获得焦点，鼠标单击焦点窗体时窗体升至最前面。
+Style * SloppyFocus, MouseFocusClickRaises
+# 窗体出现时尽量不挡住其它的窗体
+Style * TileCascadePlacement
+
+##########
+# window colorsets
+###########################
+# 未被激活的窗口的前景和背景色
+Colorset 3 fg #666666, bg #71a7b0
+# 被激活的窗口的前景和背景色
+Colorset 4 fg black, bg #a2efff
+
+############
+# window looks
+##########################
+Style * MWMBorder, FirmBorder
+#设置窗口颜色
+Style * Colorset 3
+Style * HilightColorset 4
+Style * BorderColorset 3
+Style * HilightBorderColorset 4
+#设置标题栏字体
+Style * Font "StringEncoding=utf-8:xft:Microsoft Yahei:size=12:style=Bold:encoding=iso10646-1"
+#设置标题栏上的按扭
+Style * Button 6, Button 4, Button 2
+
+#设置边框宽度
+Style * BorderWidth 2
+
+###############
+# 窗体上的按扭样式
+#########################################
+Mouse 0 2 A Close
+ButtonStyle 2 Vector 4 -- Flat
+ButtonStyle 2 - MWMDecorMenu
+
+Mouse 0 6 A Iconify
+ButtonStyle 6 Vector 5 -- Flat
+ButtonStyle 6 - MWMDecorMin
+
+Mouse 3 4 A Maximize 100 100
+Mouse 1 4 A Maximize 0 100
+ButtonStyle 4 Vector 7 \
+-- Flat
+ButtonStyle 4 - MWMDecorMax
+
+#########
+# menu colorsets
+################################
+#普通菜单项的颜色
+Colorset 7 fg #95c7f2, bg #4c4c4c, sh Black, hi #69a9ff
+#被选中菜单项的颜色
+Colorset 8 fg #dde1ff, bg #808080, sh Black, hi #69a9ff
+
+##########
+# menu styles
+#################################
+MenuStyle * MWMBorder, FirmBorder
+MenuStyle * PopupDelayed, PopupDelay 300, PopdownImmediately
+MenuStyle * Popupoffset -5 100, TitleWarpoff
+MenuStyle * BorderWidth 2
+MenuStyle * MenuColorset 7
+MenuStyle * ActiveFore
+MenuStyle * ActiveColorset 8
+MenuStyle * Font "StringEncoding=utf-8:xft:Microsoft Yahei:size=12:style=Bold:encoding=iso10646-1"
+
+###############
+# 菜单
+###################################
+DestroyMenu FvwmRootMenu
+AddToMenu FvwmRootMenu "Root Menu" Title
++ "Xterm" Exec exec xterm
++ "Emacs" Exec exec emacs
++ "FreeMind" Exec exec freemind
++ "Firefox" Exec exec firefox
++ "" Nop
++ "Debian%debian.png%" Popup "/Debian"
++ "" Nop
++ "Restart FVWM" Restart
++ "Quit FVWM" Quit
+
+###########
+# Pager and Buttons colorset
+###############################
+Colorset 10 fg black, bg #aac9f0
+Colorset 11 fg black, bg #588fd6
+
+#####
+# FvwmTaskBar
+###########
+#Style "FvwmTaskBar" NoTitle, !Handles, BorderWidth 4, Sticky, \
+#WindowListSkip, CirculateSkip, StaysOnBottom, FixedPosition,\
+#FixedSize, !Iconifiable
+
+#DestroyModuleConfig FvwmTaskBar: *
+#*FvwmTaskBar: Geometry -0-0
+#*FvwmTaskBar: Rows 2
+#*FvwmTaskBar: Font "StringEncoding=utf-8:xft:WenQuanYi Bitmap Song:size=10:encoding=iso10646-1"
+#*FvwmTaskBar: SelFont "StringEncoding=utf-8:xft:WenQuanYi Bitmap Song:size=10:style=Bold:encoding=iso10646-1"
+#*FvwmTaskBar: StatusFont "StringEncoding=utf-8:xft:WenQuanYi Bitmap Song:size=10:encoding=iso10646-1"
+#*FvwmTaskBar: Colorset 10
+#*FvwmTaskBar: IconColorset 10
+#*FvwmTaskBar: FocusColorset 11
+#*FvwmTaskBar: TipsColorset 10
+#*FvwmTaskBar: UseSkipList
+#*FvwmTaskBar: UseIconNames
+#*FvwmTaskBar: ShowTips
+#*FvwmTaskBar: StartName FVWM
+#*FvwmTaskBar: StartMenu FvwmRootMenu
+#*FvwmTaskBar: Action Click3 Menu FvwmWindowOpsMenu
+#*FvwmTaskBar: StartIcon debian.png
+
+####################
+# FvwmIconMan
+#####################
+Style "FvwmIconMan-Icons" NoTitle, NoHandles, BorderWidth 0, Sticky, \
+WindowListSkip, CirculateSkip, StaysOnBottom, FixedPosition,\
+FixedSize, !Iconifiable
+
+All (FvwmIconMan-Icons) Close
+DestroyModuleConfig FvwmIconMan-Icons: *
+
+# 仅显示当前页的图标
+#*FvwmIconMan-Icons: Resolution Global
+#*FvwmIconMan-Icons: Resolution Desk
+*FvwmIconMan-Icons: Resolution page
+# 如果某个对象设置了WindowListSkip，IconMan不会收集它
+*FvwmIconMan-Icons: UseWinList True
+*FvwmIconMan-Icons: DontShow Class=FvwmButtons,FvwmIconMan,FvwmPager,FvwmIdent,FvwmForm
+# 不显示临时窗口
+*FvwmIconMan-Icons: ShowTransient True
+# 显示图标化和未图标化的窗口
+*FvwmIconMan-Icons: ShowOnlyIcons False
+# 是否显示mini icons
+#*FvwmIconMan-Icons: DrawIcons True
+# 总是显示mini icons
+*FvwmIconMan-Icons: DrawIcons always
+# 图标按照窗口id排序
+*FvwmIconMan-Icons: Sort Id
+# 显示哪个窗口拥有焦点
+*FvwmIconMan-Icons: FollowFocus True
+# 设定显示格式，下面的设定是：图标+标题
+*FvwmIconMan-Icons: Format "%c"
+# 设定IconMan标题字符串
+*FvwmIconMan-Icons: Title ""
+# 设定项目字体
+#*FvwmIconMan-Icons: Font "StringEncoding=utf-8:xft:WenQuanYi Bitmap Song:size=10:encoding=iso10646-1"
+*FvwmIconMan-Icons: Font 8x16
+# 设定单个按扭的大小，如果高度为0，则按字体大小设定高度
+*FvwmIconMan-Icons: ButtonGeometry 48x48
+# 设定Icon Manager大小，宽度为8个按扭，高度自动增长
+*FvwmIconMan-Icons: ManagerGeometry 1x0+0-0
+# Tips
+*FvwmIconMan-Icons: Tips always
+*FvwmIconMan-Icons: TipsDelays 200 100
+*FvwmIconMan-Icons: TipsFormat "%t"
+*FvwmIconMan-Icons: TipsFont "StringEncoding=utf-8:xft:Microsoft Yahei:size=10:encoding=iso10646-1"
+*FvwmIconMan-Icons: TipsBorderWidth 0
+*FvwmIconMan-Icons: TipsColorset 10
+*FvwmIconMan-Icons: TipsJustification leftup
+# 普通按扭显示
+*FvwmIconMan-Icons: PlainButton flat
+*FvwmIconMan-Icons: FocusButton down
+*FvwmIconMan-Icons: SelectButton sunkedge
+*FvwmIconMan-Icons: FocusAndSelectButton down
+*FvwmIconMan-Icons: IconButton flat
+# colors
+*FvwmIconMan-Icons: Colorset 11
+*FvwmIconMan-Icons: PlainColorset 11
+*FvwmIconMan-Icons: FocusColorset 11
+*FvwmIconMan-Icons: SelectColorset 11
+*FvwmIconMan-Icons: FocusAndSelectColorset 11
+*FvwmIconMan-Icons: IconColorset 11
+# Actions
+*FvwmIconMan-Icons: Action Mouse 1 A SendCommand "Iconify"
+*FvwmIconMan-Icons: Action Mouse 2 MS SendCommand "Close"
+*FvwmIconMan-Icons: Action Mouse 2 N SendCommand "Nop"
+*FvwmIconMan-Icons: Action Mouse 3 A SendCommand "Nop"
+# }}}2
+
+#窗口最小化时不在桌面上产生图标
+Style * NoIcon
+
+
+#############
+# FvwmPager
+######################
+Style "FvwmPager" NoTitle, NoHandles, BorderWidth 0, Sticky,\
+WindowListSkip,CirculateSkip, StaysOnBottom, FixedPosition,\
+FixedSize, !Iconifiable
+
+DestroyModuleConfig FvwmPager: *
+*FvwmPager: Geometry -0-18
+# Pager中显示程序的小图标
+*FvwmPager: MiniIcons
+*FvwmPager: Window3DBorders
+*FvwmPager: Colorset * 11
+*FvwmPager: HilightColorset * 10
+# 隐藏桌面的标签
+*FvwmPager: ShapeLabels
+*FvwmPager: Font none
+# 使用实线分割虚拟桌面
+*FvwmPager: SolidSeparators
+
+###########
+# FvwmButtons
+###############################
+Style "FvwmButtons" NoTitle, NoHandles, BorderWidth 0, Sticky,\
+WindowListSkip,CirculateSkip, StaysOnBottom, FixedPosition, \
+FixedSize, !Iconifiable
+
+DestroyModuleConfig MyButtons: *
+*MyButtons: Geometry 48x900+0+0
+*MyButtons: Colorset 11
+#*MyButtons: ActiveColorset 10
+*MyButtons: Rows 18
+*MyButtons: Columns 1
+*MyButtons: Frame 1
+#*MyButtons: Frame 0
+*MyButtons: (1x1, Title Edit, Icon emacs.png, ActiveColorset 10,\
+Action(Mouse 1) "Exec exec emacs -geometry 80x40",\
+Action(Mouse 3) "Exec exec gvim")
+*MyButtons: (1x1, Title File, Icon fm.png, ActiveColorset 10,\
+Action(Mouse 1) "Exec exec pcmanfm",\
+Action(Mouse 3) "Exec exec nautilus --no-desktop smb:")
+*MyButtons: (1x1, Title Web, Icon browser.png, ActiveColorset 10,\
+Action(Mouse 1) "Exec exec firefox",\
+Action(Mouse 3) "Exec exec opera")
+*MyButtons: (1x1, Title Think, ActiveColorset 10,\
+Action(Mouse 1) "Exec exec freemind")
+*MyButtons: (1x11, Frame 0, \
+Swallow "FvwmIconMan", "Module FvwmIconMan FvwmIconMan-Icons")
+# *MyButtons: (1x1, Icon vim.xpm, Frame 0, ActiveColorset 10,\
+# Action(Mouse 1) "Exec exec /usr/bin/gvim -geometry 78x40",\
+# Action(Mouse 3) "Exec exec /usr/bin/gedit")
+# *MyButtons: (1x1, Icon music.xpm, Frame 0, ActiveColorset 10,\
+# Action(Mouse 1) "Exec exec /usr/bin/rhythmbox",\
+# Action(Mouse 3) "Exec exec /usr/bin/gmplayer")
+# *MyButtons: (1x1, Icon dict.xpm, Frame 0, ActiveColorset 10,\
+# Action(Mouse 1) "Exec exec /usr/bin/stardict",\
+# Action(Mouse 3) "Exec exec /usr/bin/xcalc")
+# 要注意virtual box的大小写
+# *MyButtons: (1x1, Icon vbox.png, Frame 0, ActiveColorset 10,\
+# Action(Mouse 1) "Exec exec /usr/bin/VirtualBox",\
+# Action(Mouse 3) "Exec exec /usr/bin/dosbox -conf ~/.dosbox.conf")
+# *MyButtons: (1x1, Icon game.xpm, Frame 0, ActiveColorset 10,\
+# Action(Mouse 1) "Exec exec /usr/games/gnometris",\
+# Action(Mouse 3) "Exec exec /usr/games/gnibbles")
+# *MyButtons: (3x1,\
+# Swallow (Close, Respawn, FvwmModule) FvwmScript-Clock\
+# "FvwmScript ./scripts/FvwmScript-Clock-24h-small_date")
+*MyButtons: (1x3, Frame 0, Swallow "FvwmPager", "FvwmPager 0 0")
+
+
+#############
+# Functions
+#############################
+DestroyFunc StartFunction
+AddToFunc StartFunction
+# + "I" Exec fvwm-root -r $[fvwm_wallpapers]/wallpaper-moon.png
+#+ "I" Module FvwmTaskBar
+#+ "I" Module FvwmPager
++ "I" Module FvwmButtons MyButtons
++ "I" Exec conky -c $[FVWM_USERDIR]/conkyrc
+#+ "I" Wait MyButtons
+
+DestroyFunc InitFunction
+AddToFunc InitFunction
++ I Nop
+
+DestroyFunc RestartFunction
+AddToFunc RestartFunction
++ I Nop
+
+DestroyFunc ExitFunction
+AddToFunc ExitFunction
++ I KillModule FvwmButtons
++ I Exec killall conky
+
+################
+# Mouse and key
+##########################
+# Nop表示鼠标双击时不做任何动作
+Mouse 3 R A Menu FvwmRootMenu Nop
+Mouse 1 R A WindowList
+
+# 有F12按下时，显示内建菜单
+Key F12 A A Menu MenuFvwmRoot
+# 有F9按下时，显示自定义的根菜单
+# Key F9 A N Menu FvwmRootMenu Nop 不知道这个为什么不行
+Key F9 A A Menu FvwmRootMenu Nop
+# 按下alt+tab时，显示窗口列表，并使选中的窗口获得焦点
+#Key Tab A M WindowList Root c c NoDeskSort,SelectOnRelease Meta_L
+# 可以用Key Tab A M -取消这一键绑定
+#Key Tab A M WindowList Root c c NoDeskSort
+# 按下右边的窗口键时，启动一个uxterm
+Key Super_R A A Exec exec xterm
+# 按下左边的窗口键时，显示窗口列表
+Key Super_L A A WindowList
+# 按下printscreen时，截图
+Key Print A A Exec exec gnome-screenshot
+# 用F8映射鼠标中键
+#Key F8 A A Mouse 2 A A Nop

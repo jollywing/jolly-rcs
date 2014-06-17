@@ -1,7 +1,7 @@
 
 all: app.all x11.all shell.all dist.all
 app.all: app.git app.vim app.mplayer app.dosbox app.nethack
-x11.all: x11.xdefaults x11.xinitrc x11.musca
+x11.all: x11.xdefaults x11.xinitrc x11.musca x11.fvwm
 shell.all: shell.bash shell.tcsh
 dist.all: dist.arch dist.freebsd
 
@@ -31,6 +31,11 @@ MUSCA_PATH:=${HOME}/.musca
 x11.musca:
 	mkdir -p $(MUSCA_PATH)
 	cp x11/musca/* $(MUSCA_PATH)
+
+FVWM_PATH:=${HOME}/.fvwm
+x11.fvwm:
+	mkdir -p $(FVWM_PATH)
+	cp -r x11/fvwm/* $(FVWM_PATH)
 
 shell.bash:
 	cp shell/bashrc ${HOME}/.bashrc
