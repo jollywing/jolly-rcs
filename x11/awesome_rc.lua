@@ -1,5 +1,8 @@
+-- copy this file to "~/.config/awesome/rc.lua"
+-- jollywing(jollywing@foxmail.com) 2015-04-10 Fri
+
 -- Standard awesome library
-local gears = require("gears")
+-- local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
@@ -71,20 +74,24 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-    end
-end
+-- if beautiful.wallpaper then
+--     for s = 1, screen.count() do
+--         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+--     end
+-- end
 -- }}}
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tags = {}
+-- tags = {}
+tags = {
+    names = { "1util", "2emacs", "3www", "4office", "5gimp", "6media" },
+    layout = {layouts[1], layouts[3], layouts[3], layouts[1], layouts[1], layouts[1]}
+}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     -- tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
-    tags[s] = awful.tag({ "1util", "2emacs", "3www", "4office", "5gimp", "6media" }, s, layouts[1])
+    tags[s] = awful.tag(tags.names, s, tags.layout)
 end
 -- }}}
 

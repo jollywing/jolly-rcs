@@ -13,8 +13,8 @@ subcp=cp936
 subfont-autoscale=2
 #视频输出以XV模式，启用视频加速
 vo=xv
-#ao=alsa
-ao=pulse
+ao=alsa
+#ao=pulse
 
 #OSD的默认状态：0 disabled；1 enabled；2 逝去时间；3 逝去时间／总时间
 osdlevel=3
