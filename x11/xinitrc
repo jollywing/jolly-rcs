@@ -1,22 +1,32 @@
 #!/bin/sh
+
 xrdb -merge ${HOME}/.Xdefaults
 
 xset fp+ ~/.fonts
 xset fp rehash
 
-LANG="en_US.UTF-8"
+LANG="en_US.utf8"
 export LANG
+LC_MESSAGES="C"
+export LC_MESSAGES
 MM_CHARSET="UTF-8"
 export MM_CHARSET
-LC_CTYPE="zh_CN.UTF-8"
+LC_CTYPE="zh_CN.utf8"
+export LC_CTYPE
 
-export XMODIFIERS='@im=SCIM'
-export GTK_IM_MODULE=scim
-export QT_IM_MODULE=scim
+export GTK_IM_MODULE=xim # or fcitx
+export QT_IM_MODULE=xim # or fcitx
 export GTK3_IM_MODULE=xim
+export XMODIFIERS=@im=fcitx
 
-scim -d
+#_JAVA_AWT_WM_NONREPARENTING=1
+#export _JAVA_AWT_WM_NONREPARENTING
+#AWT_TOOLKIT=MToolkit
+#export AWT_TOOLKIT
+
+fcitx -d
 
 # exec icewm-session
 # exec fvwm
-exec musca -s ${HOME}/.musca/musca_start
+exec awesome
+# exec startxfce4

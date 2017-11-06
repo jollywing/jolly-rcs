@@ -41,12 +41,12 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/sky/theme.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "lxterminal"
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
+terminal = "gnome-terminal"
+editor = "emacs"
+editor_cmd = terminal .. "--profile=jollywing -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -60,16 +60,16 @@ local layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.tile.top,
+    awful.layout.suit.max,
+    -- awful.layout.suit.magnifier
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -85,8 +85,8 @@ local layouts =
 -- Define a tag table which hold all screen tags.
 -- tags = {}
 tags = {
-    names = { "1util", "2emacs", "3www", "4office", "5gimp", "6media" },
-    layout = {layouts[1], layouts[3], layouts[3], layouts[1], layouts[1], layouts[1]}
+    names = { ":1term:", ":2emacs:", ":3web:", ":4office:", ":5etc:", ":6etc:" },
+    layout = {layouts[2], layouts[4], layouts[1], layouts[1], layouts[1], layouts[3]}
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -104,12 +104,13 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal },
-                                    { "emacs", "emacs" },
-                                    { "browser", "chromium"},
-                                    { "FM", "pcmanfm" },
-                                    { "music", "lxmusic" }
+mymainmenu = awful.menu({ items = {
+                                    { ">Term", terminal },
+                                    { "+Edit", "emacs" },
+                                    { "~Web", "firefox"},
+                                    { "#File", "nautilus" },
+                                    { "$Office", "wps" },
+                                    { "*awesome", myawesomemenu, beautiful.awesome_icon }
                                   }
                         })
 
@@ -283,7 +284,10 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+
+    -- screenshot, jollywing, 2016-09-13 Tue
+    awful.key({}, "Print", function () awful.util.spawn("gnome-screenshot") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -406,7 +410,7 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
+    local titlebars_enabled = true
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
         -- buttons for the titlebar
         local buttons = awful.util.table.join(
